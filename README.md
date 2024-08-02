@@ -13,6 +13,8 @@
 
 ### Template Codes
 
+All of these template codes are solutions of offlines and mostly online assignments of previous year batches (17, 18, 19)  
+
 - [Arithmetic Operations with Input Parsing](/Assembly%20codes/Template%20codes/arithmetics.asm) : Takes two integers and an arithmetic operator as input, performs the specified operation (+, -, *, /), and outputs the result.
 - [Base 3 to Binary Conversion](/Assembly%20codes/Template%20codes/base3_to_binary.asm) : Takes a base-3 number as input, converts it to binary, and outputs the result.
 - [Fibonacci Sequence Calculation up to N](/Assembly%20codes/Template%20codes/fibonacci_uptoN.asm) : Takes an integer N and outputs the Fibonacci sequence up to the Nth term.
@@ -25,19 +27,19 @@
 
 ### Sample Problems
 
-- **Sample Problem 1**
-  - [Problem Statement](SampleProblems/SampleProblem1.pdf)
-  - [Solution](SampleProblems/SampleProblem1.asm)
+These are the problem statements from previous year offlines and onlines. 
 
-- **Sample Problem 2**
-  - [Problem Statement](SampleProblems/SampleProblem2.pdf)
-  - [Solution](SampleProblems/SampleProblem2.asm)
+- `Problem 1` : [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Sample%20problems/CSE%20316%20Offline%201%20Description.pdf)
 
-- **Sample Problem 3**
-  - [Problem Statement](SampleProblems/SampleProblem3.pdf)
-  - [Solution](SampleProblems/SampleProblem3.asm)
+- `Problem 2` : [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Sample%20problems/Jan_2021_CSE_316_Assembly_Offline_1.pdf)
 
-*Further problems will be added under this section.*
+- `Problem 3` : [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Sample%20problems/CSE_316_offline_2.pdf)
+ 
+- `Problem 4` : [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Sample%20problems/CSE_316___Assignment_3.pdf)
+
+- `Problem 5` : [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Sample%20problems/CSE_316_Assignment_4%20(3).pdf)
+
+
 
 ### Previous Year Problems
 
@@ -48,22 +50,21 @@
 ### Atmega32 Microcontroller Codes
 
 - **ADC & LCD Display**
-  - [Problem Statement](Microcontroller/ADC_LCD/Specification.pdf)
-  - [Code](Microcontroller/ADC_LCD/main.c)
+  - [Code](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Microcontroller%20codes/main.cpp)
 
 ## Microprocessors
 
-### Class Notes
+### Class Notes of Razi Sir
 
-- [Class Notes on Microprocessors](Notes/Microprocessors_Notes.pdf)
+- [Class Notes on Microprocessors](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Razi%20sir%20notes)
 
 ## Resources
 
-- **Books:**
-  - *"The 8086 Microprocessor: Programming & Interfacing the PC"*
-    - [Buy Here](https://example.com/book1)
-  - *"Microprocessor and Microcontroller Fundamentals"*
-    - [Buy Here](https://example.com/book2)
+- **Books and Notes:**
+  - *"Assembly Language Programming by Ytha Yu and Charles Marut"*
+    - [Download from Here](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/8086-marut-book.pdf)
+  - *"Emu8086 Tutorials"*
+    - [Download from Here](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/emu8086-docs.pdf)
 
 - **EMU8086 Setup:**
-  - [Download EMU8086 Setup](https://example.com/emu8086_setup.exe)
+  - [Download EMU8086 Setup](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/setup.exe)
