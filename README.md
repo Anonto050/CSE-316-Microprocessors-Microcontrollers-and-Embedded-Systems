@@ -4,41 +4,24 @@
 
 ### Learn Basics Codes in Assembly 8086
 
-- **Basic I/O**
-  - [Code](Assembly/Basic_IO.asm)
-- **Branching**
-  - [Code](Assembly/Branching.asm)
-- **Loop**
-  - [Code](Assembly/Loop.asm)
-- **Array**
-  - [Code](Assembly/Array.asm)
-- **Stack**
-  - [Code](Assembly/Stack.asm)
-- **Procedures**
-  - [Code](Assembly/Procedures.asm)
+- [Basic I/O](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/01-Basic-IO)
+- [Branching](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/02-Branching)
+- [Loop](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/03-Loop)
+- [Array](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/04-Array)
+- [Stack](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/05-Stack)
+- [Procedures](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Practice%20codes/06-Procedures)
 
 ### Template Codes
 
-1. **Uppercase to Lowercase Conversion**
-   - **Description:** Takes an uppercase letter as input and outputs its lowercase equivalent.
-2. **Character Input to Array with Conditional Logic**
-   - **Description:** Takes numeric character inputs and stores them in an array, with conditional logic for input validation and processing.
-3. **Arithmetic Operations with Input Parsing**
-   - **Description:** Takes two integers and an arithmetic operator as input, performs the specified operation (+, -, *, /), and outputs the result.
-4. **Base 3 to Binary Conversion**
-   - **Description:** Takes a base-3 number as input, converts it to binary, and outputs the result.
-5. **Fibonacci Sequence Calculation up to N**
-   - **Description:** Takes an integer N and outputs the Fibonacci sequence up to the Nth term.
-6. **Finding the Largest Lowercase Character and Converting to Uppercase**
-   - **Description:** Reads a series of characters, identifies the largest lowercase letter, converts it to uppercase, and outputs it.
-7. **GCD Calculation with Input Parsing**
-   - **Description:** Reads two integers and calculates their Greatest Common Divisor (GCD) using the Euclidean algorithm.
-8. **Integer Array Input and Minimum Difference Calculation**
-   - **Description:** Reads an integer array, then finds and outputs the element with the smallest absolute difference to a specified number.
-9. **Array Input and Selection Sort**
-   - **Description:** Inputs an integer array, sorts it using the selection sort algorithm, and prints the sorted array.
-10. **Insertion Sort with Binary Search**
-    - **Description:** Takes an integer array as input, sorts it using insertion sort, and performs a binary search to find a specified element, indicating if and where it was found.
+- [Arithmetic Operations with Input Parsing](/Assembly%20codes/Template%20codes/arithmetics.asm) : Takes two integers and an arithmetic operator as input, performs the specified operation (+, -, *, /), and outputs the result.
+- [Base 3 to Binary Conversion](/Assembly%20codes/Template%20codes/base3_to_binary.asm) : Takes a base-3 number as input, converts it to binary, and outputs the result.
+- [Fibonacci Sequence Calculation up to N](/Assembly%20codes/Template%20codes/fibonacci_uptoN.asm) : Takes an integer N and outputs the Fibonacci sequence up to the Nth term.
+- [Finding the Largest Lowercase Character and Converting to Uppercase](/Assembly%20codes/Template%20codes/LargestLowercaseToUpper.asm) : Reads a series of characters, identifies the largest lowercase letter, converts it to uppercase, and outputs it.
+- [GCD Calculation with Input Parsing](/Assembly%20codes/Template%20codes/GCD.asm) : Reads two integers and calculates their Greatest Common Divisor (GCD) using the Euclidean algorithm.
+- [Integer Array Input and Minimum Difference Calculation](/Assembly%20codes/Template%20codes/smallest_diff_w_N.asm) : Reads an integer array, then finds and outputs the element with the smallest absolute difference to a specified number. This [code](/Assembly%20codes/Template%20codes/min_difference.asm) can also be used for the same problem. 
+- [Array Input and Selection Sort](/Assembly%20codes/Template%20codes/selection_sort.asm) : Inputs an integer array, sorts it using the selection sort algorithm, and prints the sorted array.
+- [Insertion Sort with Binary Search](/Assembly%20codes/Template%20codes/insertionSort_binarySearch.asm) : Takes an integer array as input, sorts it using insertion sort, and performs a binary search to find a specified element, indicating if and where it was found.
+- `Basic Template` : This [code](/Assembly%20codes/Template%20codes/io_template.asm) can be used as basic IO template. And this [one](/Assembly%20codes/Template%20codes/template.asm) has sorting integrated too.  
 
 ### Sample Problems
 
