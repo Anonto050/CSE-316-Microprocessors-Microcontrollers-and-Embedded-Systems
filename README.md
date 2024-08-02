@@ -43,7 +43,12 @@ These are the problem statements from previous year offlines and onlines.
 
 ### Previous Year Problems
 
-*This section will include links to previous year problem statements and solutions.*
+- **Resources** 
+  - [Link](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Prev%20years/Assembly%20Resources)
+
+- **Offline 1**
+  - [Problem Statement](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/blob/main/Assembly%20codes/Prev%20years/Assembly%20codes/Batch%2017%20Offline%201/Offline%201.pdf)
+  - [Solution](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Prev%20years/Assembly%20codes/Batch%2017%20Offline%201)
 
 ## Microcontroller Codes
 
