@@ -2,245 +2,210 @@
 .STACK 100H
 .DATA
     CR EQU 0DH
-    LF EQU 0AH  
+    LF EQU 0AH
     I DW ?
     FLAG DB 0  
-    N DW ? 
-
+    N DW ?
     J DW ?
     MAX DW ?
-          
-    ARR DW 100 DUP(?)   ;The array that we will sort
+    ARR DW 100 DUP(?)   ; The array that we will sort
     NEWLINE DB CR, LF, '$'
     INPUT_MSG DB 'Number of elements in the array: $'
     ARRAY_INPUT_MSG DB 'Array elements:', CR, LF, '$'
     SORTED_ARRAY_MSG DB 'Sorted array: $'
-    
+
 .CODE
-    MAIN PROC  
-        ;Initialize Data Segment
+    MAIN PROC
+        ; Initialize Data Segment
         MOV AX, @DATA
         MOV DS, AX
         
-        ;Print input message
+        ; Print input message for number of elements
         MOV AH, 9
         LEA DX, INPUT_MSG
         INT 21H
-        ;Input N
+        
+        ; Input N (number of elements)
         CALL INPUT_INTEGER
-        ;if(N < 0) then end the program
+        ; If N < 0, end the program
         CMP DX, 0
-        JLE END                      
-        ;else continue
+        JLE END_PROGRAM
+        ; Else continue
         MOV N, DX
-        ;Print newline
-        CALL PRINT_NEWLINE          ;Changes DX and prints newline
-        ;Print message
+        ; Print newline
+        CALL PRINT_NEWLINE
+        ; Print message for array elements input
         MOV AH, 9
         LEA DX, ARRAY_INPUT_MSG
         INT 21H
-        ;Input N integers
+        
+        ; Input N integers
         MOV CX, N
-        MOV SI, 0                   ;Point SI to the address of ARR 
-        TOP:
-            CALL INPUT_INTEGER      ;Saves the input in DX
-            MOV WORD ARR[SI], DX    ;Store the input in the array
-            CALL PRINT_NEWLINE      ;Changes DX and prints newline
-            ADD SI, 2               ;Increase the pointer to array by 2 bytes to point to the next element of the array
+        MOV SI, 0                   ; Point SI to the start of ARR
+TOP:
+        CALL INPUT_INTEGER          ; Saves the input in DX
+        MOV WORD PTR ARR[SI], DX    ; Store the input in the array
+        ADD SI, 2                   ; Move to the next element
+        CALL PRINT_NEWLINE
         LOOP TOP
         
-        CALL SELECTION_SORT         ;Sorts the array using selection sort
+        ; Sort the array using selection sort
+        CALL SELECTION_SORT
         
+        ; Print sorted array message
         MOV AH, 9
         LEA DX, SORTED_ARRAY_MSG
         INT 21H
-        CALL PRINT_ARRAY            ;Prints the sorted array
+        ; Print the sorted array
+        CALL PRINT_ARRAY
         
-        END:
-        ;RETURN 0
+END_PROGRAM:
+        ; Exit the program
         MOV AH, 4CH
         INT 21H
     MAIN ENDP 
-    
+
     PRINT_NEWLINE PROC
-        LEA DX, NEWLINE         ;Print New line
+        LEA DX, NEWLINE             ; Print newline
         MOV AH, 9
         INT 21H
         RET
     PRINT_NEWLINE ENDP 
-    
+
     SELECTION_SORT PROC
-        MOV I, 0                ;Initialize I to 0
+        MOV I, 0                    ; Initialize I to 0
         LOOP_FOR:
-            ;for(i = 0; i < N; i++)
-            MOV CX, I       
-            MOV MAX, CX         ;Initialize MAX to I
+            CMP I, N
+            JGE END_LOOP_FOR
+        
+            MOV CX, I
+            MOV MAX, CX             ; Initialize MAX to I
             
             INC CX
-            MOV J, CX           ;Initialize J to I + 1
+            MOV J, CX               ; Initialize J to I + 1
             
             LOOP_J:
-                ;for(j = i + 1; j < N; j++)
-                MOV CX, N   
-                CMP J, CX       ;Compare J with N
-                JGE END_LOOP_J  ;If J is greater than or equal to N, then end the loop 
+                CMP J, N
+                JGE END_LOOP_J
             
-                MOV BX, J       
+                MOV BX, J
                 SHL BX, 1
-                MOV BX, ARR[BX] ;Get the value of the element at index J
+                MOV AX, ARR[BX]     ; Get ARR[J]
                 
                 MOV SI, MAX
                 SHL SI, 1
-                MOV SI, ARR[SI] ;Get the value of the element at index MAX
+                MOV DX, ARR[SI]     ; Get ARR[MAX]
                 
-                ;if(ARR[j] > ARR[max]) then MAX = J
-                CMP BX, SI
-                JNG NOT_GREATER ;else do nothing
-                MOV CX, J
-                MOV MAX, CX
+                CMP AX, DX
+                JNG NOT_GREATER     ; If ARR[J] <= ARR[MAX], skip
+                MOV MAX, J          ; Else, update MAX
                 
-                NOT_GREATER:
-                
-                INC J           ;Increment J
-                JMP LOOP_J      ;Go to the next iteration of the loop
+NOT_GREATER:
+                INC J
+                JMP LOOP_J
             END_LOOP_J:
             
+            ; Swap ARR[I] and ARR[MAX]
             MOV BX, MAX
             SHL BX, 1
-            MOV AX, ARR[BX]     ;Get the value of the element at index MAX
+            MOV AX, ARR[BX]         ; AX = ARR[MAX]
+            MOV DX, ARR[SI]         ; DX = ARR[I]
+
+            MOV ARR[BX], DX         ; ARR[MAX] = ARR[I]
+            MOV ARR[SI], AX         ; ARR[I] = ARR[MAX]
             
-            MOV SI, I
-            SHL SI, 1
-            MOV SI, ARR[SI]     ;Get the value of the element at index I
-            
-            ;Swap the elements at index I and index MAX
-            MOV BX, MAX
-            SHL BX, 1
-            MOV ARR[BX], SI     
-            
-            MOV BX, I
-            SHL BX, 1
-            MOV ARR[BX], AX
-            ;Print the immediately sorted array
+            ; Print the array after each swap (optional for debugging)
             CALL PRINT_ARRAY
             CALL PRINT_NEWLINE
 
-            INC I               ;Increment I
-            ;if(I < N) then continue
-            MOV CX, N
-            DEC CX 
-            CMP I, CX
-            JL LOOP_FOR              
-        END_LOOP_FOR: 
+            INC I
+            JMP LOOP_FOR
+        END_LOOP_FOR:
         RET
-    SELECTION_SORT ENDP    
-    
-    ;Function that takes an integer as an input
-    ;and saves it in DX
-    ;Changes the value of registers AX, BX, DX
-    INPUT_INTEGER PROC   
-        XOR DX, DX  ;Initialize DX to 0
-        MOV I, 0    ;Calculates number of digits
-        INPUT_LOOP:
-            ;Take character input
-            MOV AH, 1
-            INT 21H
-            ;If AL == CR || AL == LF then jump to end of loop
-            CMP AL, CR
-            JE END_INPUT_LOOP
-            CMP AL, LF
-            JE END_INPUT_LOOP
-            ;elif(AL == '-') then FLAG = 1
-            CMP AL, '-'
-            JNE DIGIT_INPUT     ;else the input is a digit
-            ;else if I > 0 and AL == '-' then end the program
-            CMP I, 0
-            JNE END
-            MOV FLAG, 1
-            INC I
-            JMP INPUT_LOOP
-            ;Fast convert character to digit, also clears AH
-            DIGIT_INPUT:
-            AND AX, 000FH
-            MOV BX, AX          ;Save AX in BX
-            ;DX = DX * 10 + BX
-            MOV AX, 10          ;AX = 10
-            MUL DX              ;AX = AX * DX //// THOUGH MUL CHANGES DX, IT DOESN'T AFFECT OUT CALCULATIONS
-            ADD AX, BX          ;AX = AX + BX
-            MOV DX, AX          ;Stores the final value
-            INC I
-            JMP INPUT_LOOP            
-        END_INPUT_LOOP:
+    SELECTION_SORT ENDP 
+
+    INPUT_INTEGER PROC
+        XOR DX, DX                  ; Initialize DX to 0
+        MOV I, 0                    ; Initialize digit count
+INPUT_LOOP:
+        MOV AH, 1
+        INT 21H
+        CMP AL, CR
+        JE END_INPUT_LOOP
+        CMP AL, LF
+        JE END_INPUT_LOOP
+        CMP AL, '-'
+        JNE DIGIT_INPUT
+        CMP I, 0
+        JNE END_INPUT_LOOP
+        MOV FLAG, 1
+        JMP INPUT_LOOP
+
+DIGIT_INPUT:
+        SUB AL, '0'
+        MOV BX, AX
+        MOV AX, 10
+        MUL DX
+        ADD DX, BX
+        INC I
+        JMP INPUT_LOOP
+
+END_INPUT_LOOP:
         CMP FLAG, 1
         JNE END_INPUT
-        NEG DX                  ;else make DX negative
-        MOV FLAG, 0             ;make flag 0 again
-        END_INPUT:
+        NEG DX                      ; Make DX negative if FLAG is set
+        MOV FLAG, 0                 ; Reset FLAG
+END_INPUT:
         RET
     INPUT_INTEGER ENDP
 
-    ;Prints the number stored in BX
     PRINT_INTEGER PROC
-        ;Store already used value of I in the stack
-        MOV DX, I
-        PUSH DX
-
-        ;if(BX < -1) then the number is positive
         CMP BX, 0
-        JGE POSITIVE        
-        ;else, the number is negative
-        MOV AH, 2           
-        MOV DL, '-'         ;Print a '-' sign
-        INT 21H
-        NEG BX              ;make BX positive
-
-        POSITIVE:
-        MOV AX, BX
-        MOV I, 0        ;Initialize character count
-        PUSH_WHILE:
-            XOR DX, DX  ;clear DX
-            MOV BX, 10  ;BX has the divisor //// AX has the dividend
-            DIV BX
-            ;quotient is in AX and remainder is in DX
-            PUSH DX     ;Division by 10 will have a remainder less than 8 bits
-            INC I       ;I++
-            ;if(AX == 0) then break the loop
-            CMP AX, 0
-            JE END_PUSH_WHILE
-            ;else continue
-            JMP PUSH_WHILE
-        END_PUSH_WHILE:
+        JGE POSITIVE
         MOV AH, 2
-        POP_WHILE:
-            POP DX      ;Division by 10 will have a remainder less than 8 bits
-            ADD DL, '0'
-            INT 21H     ;So DL will have the desired character
+        MOV DL, '-'
+        INT 21H
+        NEG BX
 
-            DEC I       ;I--
-            ;if(I <= 0) then end loop
-            CMP I, 0
-            JLE END_POP_WHILE
-            ;else continue
-            JMP POP_WHILE
-        END_POP_WHILE:
-        ;Restore I to the value it had before the function was called
+POSITIVE:
+        MOV AX, BX
+        MOV I, 0
+
+PUSH_WHILE:
+        XOR DX, DX
+        MOV BX, 10
+        DIV BX
+        PUSH DX
+        INC I
+        CMP AX, 0
+        JNE PUSH_WHILE
+
+        MOV AH, 2
+POP_WHILE:
         POP DX
-        MOV I, DX
+        ADD DL, '0'
+        INT 21H
+        DEC I
+        CMP I, 0
+        JG POP_WHILE
+
         RET
     PRINT_INTEGER ENDP
-    
+
     PRINT_ARRAY PROC
         LEA SI, ARR
         MOV CX, N
-        
-        TOP_PRINT_ARRAY:
-            MOV BX, [SI]        
-            CALL PRINT_INTEGER
-            MOV DL, ','     ;print a comma
-            INT 21H
 
-            ADD SI, 2       ;Point to next element of the array
-        LOOP TOP_PRINT_ARRAY
+PRINT_ARRAY_LOOP:
+        MOV AX, [SI]
+        MOV BX, AX
+        CALL PRINT_INTEGER
+        MOV DL, ','
+        MOV AH, 2
+        INT 21H
+
+        ADD SI, 2
+        LOOP PRINT_ARRAY_LOOP
         RET
     PRINT_ARRAY ENDP
 END MAIN
