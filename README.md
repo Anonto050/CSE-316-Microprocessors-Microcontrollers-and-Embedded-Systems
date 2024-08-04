@@ -63,6 +63,10 @@ These are the problem statements from previous year offlines and onlines.
 
 - [Class Notes on Microprocessors](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/Razi%20sir%20notes)
 
+### Class Tests
+
+- [Class Tests Questions and Solutions](https://github.com/Anonto050/CSE-316-Microprocessors-Microcontrollers-and-Embedded-Systems/tree/main/Assembly%20codes/July_2022_CSE_315_CT_14-solution)
+
 ## Resources
 
 - **Books and Notes:**
